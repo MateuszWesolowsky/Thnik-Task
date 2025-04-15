@@ -88,7 +88,9 @@ export const InputPhoto = ({ label, name, error, onFileSelect }: Props) => {
         ) : (
           <div className="flex justify-center gap-2 text-sm">
             <p className="text-active font-medium underline">Upload a file</p>
-            <p className="text-[#898DA9]">or drag and drop here</p>
+            <p className=" hidden text-[#898DA9] md:inline">
+              or drag and drop here
+            </p>
           </div>
         )}
 
