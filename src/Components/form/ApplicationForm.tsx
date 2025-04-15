@@ -102,7 +102,14 @@ export const ApplicationForm = () => {
           setSelectedTime={setSelectedTime}
         />
         <ButtonSubmit
-          isDisabled={Object.keys(errors).length > 0 || !selectedTime}
+          isDisabled={
+            Object.keys(errors).length > 0 ||
+            !selectedTime ||
+            !formData.firstName ||
+            !formData.lastName ||
+            !formData.email ||
+            !formData.photo
+          }
         >
           Send Application
         </ButtonSubmit>

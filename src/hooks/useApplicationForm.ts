@@ -7,7 +7,7 @@ export const useApplicationForm = () => {
     firstName: "",
     lastName: "",
     email: "",
-    age: 0,
+    age: 1,
     photo: null,
   });
 
