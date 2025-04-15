@@ -1,10 +1,10 @@
+import { useState } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 import { useApplicationForm } from "../../hooks/useApplicationForm";
 import { TextInput } from "./TextInput";
 import { AgeSlider } from "./AgeSlider";
 import { InputPhoto } from "./InputPhoto";
-import "react-datepicker/dist/react-datepicker.css";
-import CalendarWithHolidays from "./Calendar";
-import { useState } from "react";
+import { CalendarWithHolidays } from "./Calendar";
 import { validateForm } from "../../utils/validateForm";
 import { ButtonSubmit } from "./ButtonSubmit";
 
@@ -14,10 +14,11 @@ export const ApplicationForm = () => {
   const { formData, errors, setErrors, handleChange, handleFileSelect } =
     useApplicationForm();
 
-  console.log(errors);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const validationErrors = validateForm(formData);
+
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
@@ -30,10 +31,8 @@ export const ApplicationForm = () => {
       selectedTime,
     };
 
-    console.log(finalFormData);
-
     const formDataToSend = new FormData();
-    console.log(formDataToSend);
+
     for (const key in finalFormData) {
       formDataToSend.append(
         key,
@@ -46,6 +45,7 @@ export const ApplicationForm = () => {
         method: "POST",
         body: formDataToSend,
       });
+
       console.log("done");
     } catch (err: unknown) {
       console.log(err);

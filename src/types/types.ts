@@ -6,10 +6,6 @@ export type FormValues = {
   photo: File | null;
 };
 
-export type FormErrors = {
-  [key in keyof FormValues]?: string;
-};
-
 export interface Holiday {
   country: string;
   iso: string;
@@ -19,3 +15,7 @@ export interface Holiday {
   name: string;
   type: "NATIONAL_HOLIDAY" | "OBSERVANCE";
 }
+
+export type FormErrors = {
+  [key in keyof FormValues]?: string;
+};

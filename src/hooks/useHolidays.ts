@@ -20,6 +20,7 @@ export const useHolidays = () => {
         );
 
         const data = await response.json();
+
         setHolidays(data);
       } catch (err) {
         console.error("Failed to fetch holidays", err);

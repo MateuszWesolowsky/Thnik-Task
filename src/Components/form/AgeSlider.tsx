@@ -1,4 +1,5 @@
 import ERROR_ICON from "../../assets/error-icon.svg";
+
 type Props = {
   label: string;
   name: string;
@@ -42,13 +43,13 @@ export const AgeSlider = ({
             [&::-webkit-slider-thumb]:h-4 
             [&::-webkit-slider-thumb]:w-4 
             [&::-webkit-slider-thumb]:rounded-full 
-            [&::-webkit-slider-thumb]:bg-[#761BE4] 
+            [&::-webkit-slider-thumb]:bg-active
             [&::-webkit-slider-thumb]:cursor-pointer 
             [&::-webkit-slider-thumb]:border-none
-            [&::-moz-range-thumb]:bg-[#761BE4]
+            [&::-moz-range-thumb]:bg-active
             [&::-moz-range-thumb]:border-none
             [&::-moz-range-thumb]:cursor-pointer
-            bg-gradient-to-r from-[#761BE4] to-[#cbb6e5] bg-no-repeat"
+            bg-gradient-to-r from-active to-default bg-no-repeat"
           style={{
             background: `linear-gradient(to right, #761BE4 ${value}%, #CBB6E5 ${value}%)`,
           }}
@@ -58,8 +59,8 @@ export const AgeSlider = ({
           className="absolute -bottom-10 translate-x-[-30%] flex flex-col items-center"
           style={{ left: `calc(${value}%)` }}
         >
-          <div className="w-2 h-2 bg-white border-l border-t border-[#CBB6E5] rotate-45 absolute -top-[4px]"></div>
-          <div className="bg-white border border-[#CBB6E5] text-[#761BE4] w-[37px] h-[31px] text-sm font-medium flex items-center justify-center rounded shadow-sm">
+          <div className="w-2 h-2 bg-white border-l border-t border-default rotate-45 absolute -top-[4px]"></div>
+          <div className="bg-white border border-default text-active w-[37px] h-[31px] text-sm font-medium flex items-center justify-center rounded shadow-sm">
             {value}
           </div>
         </div>

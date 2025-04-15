@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FormErrors, FormValues } from "../types/types";
 
 export const useApplicationForm = () => {
+  const [errors, setErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState<FormValues>({
     firstName: "",
     lastName: "",
@@ -9,8 +10,6 @@ export const useApplicationForm = () => {
     age: 0,
     photo: null,
   });
-
-  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleFileSelect = (file: File | null) => {
     setFormData((prev) => ({
@@ -27,6 +26,7 @@ export const useApplicationForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,

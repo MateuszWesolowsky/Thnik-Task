@@ -5,8 +5,6 @@ import { format } from "date-fns";
 import { Time } from "../Time";
 import { useHolidays } from "../../hooks/useHolidays";
 
-const trainingTimes = ["08:00", "10:00", "12:00", "14:00", "16:00"];
-
 interface Props {
   selectedDate: Date | null;
   selectedTime: string | null;
@@ -14,7 +12,9 @@ interface Props {
   setSelectedDate: (date: Date | null) => void;
 }
 
-const CalendarWithHolidays = ({
+const trainingTimes = ["08:00", "10:00", "12:00", "14:00", "16:00"];
+
+export const CalendarWithHolidays = ({
   selectedDate,
   selectedTime,
   setSelectedTime,
@@ -29,20 +29,27 @@ const CalendarWithHolidays = ({
 
   const filterDate = (date: Date): boolean => {
     if (date.getDay() === 0) return false;
+
     const dateString = format(date, "yyyy-MM-dd");
+
     const holidayFound = holidays.find(
       (h) => h.date === dateString && h.type === "NATIONAL_HOLIDAY"
     );
+
     return !holidayFound;
   };
 
   const handleDateChange = (date: Date | null) => {
     if (!date) return;
+
     setSelectedDate(date);
+
     const dateString = format(date, "yyyy-MM-dd");
+
     const observanceHoliday = holidays.find(
       (h) => h.date === dateString && h.type === "OBSERVANCE"
     );
+
     if (observanceHoliday) {
       setHolidayInfo(observanceHoliday.name);
     } else {
@@ -133,5 +140,3 @@ const CalendarWithHolidays = ({
     </div>
   );
 };
-
-export default CalendarWithHolidays;
