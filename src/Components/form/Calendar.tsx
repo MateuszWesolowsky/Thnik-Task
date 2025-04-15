@@ -56,7 +56,6 @@ const CalendarWithHolidays = ({
         <div>
           <p>Date</p>
           <DatePicker
-            className="[&_.react-datepicker__day--selected]:bg-purple-300 [&_.react-datepicker__day--selected]:text-white"
             selected={selectedDate}
             onChange={handleDateChange}
             inline
