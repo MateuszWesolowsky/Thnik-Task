@@ -1,7 +1,8 @@
 import "./App.css";
+import { ApplicationForm } from "./Components/form/ApplicationForm";
 
 function App() {
-  return <p className="text-[16px]">elo</p>;
+  return <ApplicationForm />;
 }
 
 export default App;
