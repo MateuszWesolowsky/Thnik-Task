@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { Holiday } from "../../types/types";
 import { Time } from "../Time";
+import { useHolidays } from "../../hooks/useHolidays";
 
-const API_KEY = "OH+HEf/9IH2zuHR/cMO/8g==ldhBovC6Rpa1TIss";
 const trainingTimes = ["08:00", "10:00", "12:00", "14:00", "16:00"];
 
 interface Props {
@@ -21,31 +20,12 @@ const CalendarWithHolidays = ({
   setSelectedTime,
   setSelectedDate,
 }: Props) => {
-  const [holidays, setHolidays] = useState<Holiday[]>([]);
+  const { holidays } = useHolidays();
   const [holidayInfo, setHolidayInfo] = useState("");
 
   const handleTime = (time: string) => {
     setSelectedTime(time);
   };
-
-  useEffect(() => {
-    const fetchHolidays = async () => {
-      try {
-        const response = await fetch(
-          `https://api.api-ninjas.com/v1/holidays?country=PL`,
-          {
-            headers: { "X-Api-Key": API_KEY },
-          }
-        );
-        const data: Holiday[] = await response.json();
-        setHolidays(data);
-      } catch (err) {
-        console.error("Failed to fetch holidays", err);
-      }
-    };
-
-    fetchHolidays();
-  }, []);
 
   const filterDate = (date: Date): boolean => {
     if (date.getDay() === 0) return false;
